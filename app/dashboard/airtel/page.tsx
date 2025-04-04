@@ -1,55 +1,66 @@
 import { PackageCategory } from "@/components/dashboard/package-category"
+import { Clock, Calendar, Youtube, Music2, Film, Tv } from "lucide-react"
 
 const categories = [
   {
     id: "daily",
-    title: "DAILY DATA (24 HOURS)",
-    icon: "/placeholder.svg?height=40&width=40",
+    title: "Daily Data (24 Hours)",
+    icon: <Clock className="w-10 h-10" />,
   },
   {
     id: "weekly",
-    title: "7 DAYS",
-    icon: "/placeholder.svg?height=40&width=40",
+    title: "7 Day Bundles",
+    icon: <Calendar className="w-10 h-10" />,
   },
   {
     id: "monthly",
-    title: "30 DAYS",
-    icon: "/placeholder.svg?height=40&width=40",
+    title: "30 Day Plans",
+    icon: <Calendar className="w-10 h-10" />,
   },
   {
     id: "youtube",
-    title: "YOUTUBE DATA",
-    icon: "/placeholder.svg?height=40&width=40",
+    title: "YouTube Streaming",
+    icon: <Youtube className="w-10 h-10" />,
   },
   {
     id: "tiktok",
-    title: "TIKTOK",
-    icon: "/placeholder.svg?height=40&width=40",
+    title: "TikTok Packages",
+    icon: <Music2 className="w-10 h-10" />,
   },
   {
     id: "showmax",
-    title: "SHOWMAX",
-    icon: "/placeholder.svg?height=40&width=40",
+    title: "Showmax Streaming",
+    icon: <Film className="w-10 h-10" />,
   },
-]
+] as const
 
 export default function AirtelPage() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight text-red-700">Airtel Data Bundles</h1>
-        <p className="text-muted-foreground">Choose from a variety of affordable data packages</p>
-      </div>
+    <div className="space-y-8">
+      <header className="space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight text-red-700">
+          Airtel Data Bundles
+        </h1>
+        <p className="text-lg text-red-600/90">
+          Choose from our curated selection of affordable data packages
+        </p>
+      </header>
 
-      <div className="relative p-6 rounded-xl bg-gradient-to-r from-red-50 to-red-100 overflow-hidden border border-red-200">
-        <div className="absolute right-0 bottom-0 opacity-20">
+      <section 
+        className="relative p-8 rounded-2xl bg-gradient-to-br from-red-50 to-red-100/50 
+                   border border-red-200/70 shadow-sm"
+        aria-labelledby="airtel-packages-heading"
+      >
+        <div 
+          className="absolute right-0 bottom-0 opacity-15 -rotate-12"
+          aria-hidden="true"
+        >
           <svg
             width="320"
             height="320"
             viewBox="0 0 100 100"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-red-600"
+            className="text-red-300"
           >
             <path
               d="M50 0C22.4 0 0 22.4 0 50C0 77.6 22.4 100 50 100C77.6 100 100 77.6 100 50C100 22.4 77.6 0 50 0Z"
@@ -58,7 +69,11 @@ export default function AirtelPage() {
           </svg>
         </div>
 
-        <div className="relative z-10 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <h2 id="airtel-packages-heading" className="sr-only">
+          Airtel Data Package Categories
+        </h2>
+
+        <div className="relative z-10 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => (
             <PackageCategory
               key={category.id}
@@ -67,11 +82,11 @@ export default function AirtelPage() {
               icon={category.icon}
               color="red"
               provider="airtel"
+              className="hover:border-red-300/50 transition-colors"
             />
           ))}
         </div>
-      </div>
+      </section>
     </div>
   )
 }
-
